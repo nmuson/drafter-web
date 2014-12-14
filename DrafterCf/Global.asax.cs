@@ -14,9 +14,11 @@ namespace DrafterCf
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Database.SetInitializer<ApplicationDbContext>(new MyDbInitializer());
+            Database.SetInitializer(new MyDbInitializer());
             using (ApplicationDbContext db = new ApplicationDbContext())
+            {
                 db.Database.Initialize(false);
+            }
         }
     }
 }
